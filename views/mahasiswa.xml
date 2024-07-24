@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+    <!-- modulrizma.mahasiswa tree view -->
+    <record id="modulrizma_mahasiswa_view_tree" model="ir.ui.view">
+        <field name="name">modulrizma.mahasiswa.view.tree</field>
+        <field name="model">modulrizma.mahasiswa</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Add your fields here -->
+                <field name="name"/> 
+                <field name="nim"/> 
+                <field name="alamat"/> 
+                <field name="birth"/> 
+                <field name="telp"/> 
+                <field name="agama_id"/>                
+            </tree>
+        </field>
+    </record>
+        
+<!-- modulrizma.mahasiswa form view -->
+
+<!-- modulrizma.mahasiswa search view -->
+<record id="modulrizma_mahasiswa_view_search" model="ir.ui.view">
+    <field name="name">modulrizma.mahasiswa.view.search</field>
+    <field name="model">modulrizma.mahasiswa</field>
+    <field name="arch" type="xml">
+        <search string="Search Description">
+            <!-- Add your fields here -->
+                <field name="name"/> 
+                <field name="nim"/> 
+                <field name="alamat"/>
+                <field name="birth"/> 
+                <field name="telp"/> 
+                <field name="agama_id"/> 
+        </search>
+    </field>
+</record>
+
+<record id="modulrizma_mahasiswa_view_form" model="ir.ui.view">
+    <field name="name">modulrizma.mahasiswa.view.form</field>
+    <field name="model">modulrizma.mahasiswa</field>
+    <field name="arch" type="xml">
+        <form string="">
+            <sheet>
+                <notebook>
+                    <page string="Nama Mahasiswa" name="name">
+                        <group>
+                            <field name="name" placeholder= "Nama Mahasiswa"/> 
+                            <field name="nim" placeholder= "NIM"/> 
+                            <field name="alamat" placeholder= "Alamat"/> 
+                            <field name="birth" widget="date" placeholder="Tanggal Lahir"/>
+                            <field name="telp" placeholder= "Telepon"/> 
+                            <field name="agama_id" placeholder= "Agama"/> 
+                            <field name="image" widget='image' class="oe_avatar"/>
+                        </group>
+                    </page>
+                    <page string="Orang Tua" name="name">
+                        <group>
+                            <field name="ayah" placeholder= "Ayah"/> 
+                            <field name="ibu" placeholder= "Ibu"/> 
+                            <field name="pekerjaanAyah" placeholder= "Pekerjaan Ayah"/> 
+                            <field name="pekerjaanIbu" placeholder= "Pekerjaan Ibu"/> 
+                            <field name="message_ids" widget="mail_thread"/>
+                        </group>
+                    </page>
+                    <page string="Tahun Akademik" name="name">
+                        <group>
+                            <field name="angkatan_id" placeholder="Tahun Angkatan"/> 
+                        </group>
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<!-- calendar if a date field exists -->
+        <!-- graph -->
+        <record id="view_modulrizma_mahasiswa_graph" model="ir.ui.view">
+            <field name="name">modulrizma_mahasiswa</field>
+            <field name="model">modulrizma.mahasiswa</field>
+            <field name="arch" type="xml">
+                <graph string="Data Aspek" type="bar">
+                </graph>
+            </field>
+        </record>
+
+        <!-- action window -->
+        <record id="action_modulrizma_mahasiswa" model="ir.actions.act_window">
+            <field name="name">Data Mahasiswa </field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">modulrizma.mahasiswa</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="context">{"search_default_fieldname":1}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to add a new Mahasiswa
+                </p><p>
+                Click the Create button to add a new Mahasiswa
+                </p>
+            </field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="menu_modulrizma_mahasiswa" name="Mahasiswa" parent="vokasi_master" action="action_modulrizma_mahasiswa" sequence="20"/> 
+    </data>
+</odoo>
